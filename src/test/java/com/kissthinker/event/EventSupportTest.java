@@ -11,7 +11,6 @@ import java.util.concurrent.Future;
 import java.util.concurrent.TimeUnit;
 
 import org.junit.Before;
-import org.junit.Ignore;
 import org.junit.Test;
 
 import com.google.common.base.Stopwatch;
@@ -169,13 +168,10 @@ public class EventSupportTest
     }
 
     /**
-     * Note test "garbageCollectSourceEventListener" cannot be tested
-     * as setting source to null will not work as PropertyChangeListener references the source.
      * @throws ExecutionException
      * @throws InterruptedException
      *
      */
-    @Ignore
     @Test
     public void garbageCollectNoSourceEventListener() throws InterruptedException, ExecutionException
     {

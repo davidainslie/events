@@ -3,8 +3,11 @@ package com.kissthinker.event;
 import java.beans.PropertyChangeEvent;
 import java.beans.PropertyChangeSupport;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 import java.util.Map;
+import java.util.Set;
+import java.util.WeakHashMap;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
@@ -27,13 +30,10 @@ public abstract class EventSupport
     private static final ExecutorService EXECUTOR_SEVICE = Executors.newCachedThreadPool();
     
     /** */
-    private static final Map<Object, PropertyChangeSupport> PROPERTY_CHANGE_SUPPORTS = new MapMaker().weakKeys().softValues().makeMap();
+    private static final Map<Object, PropertyChangeSupport> PROPERTY_CHANGE_SUPPORTS = new MapMaker().weakKeys().weakValues().makeMap();
 
     /** */
-    private static final Map<EventListener<?>, Object> NO_SOURCE_EVENT_LISTENERS = new MapMaker().weakKeys().softValues().makeMap();
-
-    /** */
-    private static final Object NO_SOURCE_MARKER = new Object();
+    private static final Set<EventListener<?>> NO_SOURCE_EVENT_LISTENERS = Collections.newSetFromMap(new WeakHashMap<EventListener<?>, Boolean>());
 
     /** */
     private static final int MAXIMUM_SAVED_EVENTS = 100;
@@ -111,7 +111,7 @@ public abstract class EventSupport
     {
         synchronized (NO_SOURCE_EVENT_LISTENERS)
         {
-            NO_SOURCE_EVENT_LISTENERS.put(eventListener, NO_SOURCE_MARKER);
+            NO_SOURCE_EVENT_LISTENERS.add(eventListener);
         }
     }
 
@@ -237,11 +237,14 @@ public abstract class EventSupport
     /**
      * Saving events allows them to be processed if they were originally fired during object construction.
      * E.g.
-     * Object source = new Source();
-     * EventSupport.listen(source, EventListener<SomeEvent>()
-     * {
-     *      public void onEvent(SomeEvent someEvent){}
-     * });
+     *  <pre>
+     *  Object source = new Source();
+     *  
+     *  EventSupport.listen(source, EventListener<SomeEvent>()
+     *  {
+     *      public void onEvent(SomeEvent someEvent) {}
+     *  });
+     *  </pre>
      * Now if source fires an event during its construction i.e. within its constructor, the listener will miss the event.
      * It would be best to avoid firing events during construction, however it can make sense to fire an event at this time.
      * @param <E>
@@ -308,7 +311,7 @@ public abstract class EventSupport
 
         synchronized (NO_SOURCE_EVENT_LISTENERS)
         {
-            noSourceEventListenersSnapshot = CollectionUtil.arrayList(NO_SOURCE_EVENT_LISTENERS.keySet());
+            noSourceEventListenersSnapshot = CollectionUtil.arrayList(NO_SOURCE_EVENT_LISTENERS);
         }
 
         for (EventListener<?> eventListener : noSourceEventListenersSnapshot)

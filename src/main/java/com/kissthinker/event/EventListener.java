@@ -7,7 +7,7 @@ import java.beans.PropertyChangeListener;
  * @author David Ainslie
  */
 public abstract class EventListener<E> implements PropertyChangeListener
-{
+{    
     /**
      *
      * @param event
