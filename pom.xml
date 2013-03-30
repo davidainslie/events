@@ -20,6 +20,9 @@
         <!-- Ensure that the build is consistent across all platforms i.e. platform independent encoding -->
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         
+        <!-- github server corresponds to entry in ~/.m2/settings.xml -->
+        <github.global.server>github</github.global.server>
+        
         <kissthinker.collection.version>0.0.1</kissthinker.collection.version>
         
         <java.version>1.7</java.version>
