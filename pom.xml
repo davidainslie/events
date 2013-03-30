@@ -42,8 +42,23 @@
         
     <repositories>
         <repository>
-            <id>davidainslie-collection-old-repo</id>
-            <url>https://github.com/davidainslie/collection-old/raw/master/repo</url>
+            <id>reflect-old-mvn-repo</id>
+            <url>https://raw.github.com/davidainslie/reflect-old/mvn-repo/</url>
+            
+            <snapshots>
+                <enabled>true</enabled>
+                <updatePolicy>always</updatePolicy>
+            </snapshots>
+        </repository>
+        
+        <repository>
+            <id>collection-old-mvn-repo</id>
+            <url>https://raw.github.com/davidainslie/collection-old/mvn-repo/</url>
+            
+            <snapshots>
+                <enabled>true</enabled>
+                <updatePolicy>always</updatePolicy>
+            </snapshots>
         </repository>
     </repositories>    
 
