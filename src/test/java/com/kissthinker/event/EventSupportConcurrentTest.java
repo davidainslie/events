@@ -71,7 +71,7 @@ public class EventSupportConcurrentTest
     public static void classAssertion() throws InterruptedException
     {
         COUNT_DOWN_LATCH.await(3, TimeUnit.SECONDS);
-        // assertEquals(1, sourceEventCount); TODO Why assertion error occurs now that EventSupport has been changed to use soft references.
+        assertEquals(1, sourceEventCount);
         assertEquals(2, noSourceEventCount);
     }
 
