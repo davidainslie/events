@@ -6,7 +6,9 @@ Example
 
 Say the source is
 
+`````java
 User user = new User();
+`````
 
 where an "event" associated with the User can be declared anywhere as a POJO e.g. let's declare our event within User.
 
