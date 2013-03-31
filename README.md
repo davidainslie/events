@@ -12,6 +12,7 @@ User user = new User();
 
 where an "event" associated with the User can be declared anywhere as a POJO e.g. let's declare our event within User.
 
+<pre>
 <code>
 public class User
 {
@@ -24,6 +25,7 @@ public class User
     }
 }    
 </code>
+</pre>
 
 And to listen to User.Event on "user", just do:
 
