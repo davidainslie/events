@@ -29,6 +29,7 @@ public class User
 
 And to listen to User.Event on "user", just do:
 
+<pre>
 <code>
 EventSupport.listen(user, new EventListener<User.Event>()
 {
@@ -38,9 +39,11 @@ EventSupport.listen(user, new EventListener<User.Event>()
     }
 });
 </code>
+</pre>
 
 And to listen to User.Event from anyone (not just users, but anything that fires an User.Event):
 
+<pre>
 <code>
 EventSupport.listen(new EventListener<User.Event>()
 {
@@ -50,6 +53,7 @@ EventSupport.listen(new EventListener<User.Event>()
     }
 });
 </code>
+</pre>
 
 For our "user" to fire an event:
 <code>
