@@ -16,7 +16,6 @@ where an "event" associated with the User can be declared anywhere as a POJO e.g
 <code>
 public class User
 {
-    // ...
     // Properties.
     // ...
     
