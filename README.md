@@ -6,7 +6,7 @@ Example
 
 Say the source is
 
-`````java
+`````javascript
 User user = new User();
 `````
 
