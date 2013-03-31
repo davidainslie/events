@@ -59,7 +59,7 @@ For our "user" to fire an event:
 EventSupport.fire(user, new User.Event());
 </code>
 
-And to fire an anonymoure "user" event:
+And to fire an anonymous "user" event:
 <code>
 EventSupport.fire(new User.Event());
 </code>
