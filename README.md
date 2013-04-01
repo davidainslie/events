@@ -6,9 +6,9 @@ Example
 
 Say the source is
 
-<code>
+```java
 User user = new User();
-</code>
+```
 
 where an "event" associated with the User can be declared anywhere as a POJO e.g. let's declare our event within User.
 
@@ -26,8 +26,7 @@ public class User
 
 And to listen to User.Event on "user", just do:
 
-<pre>
-<code>
+```java
 EventSupport.listen(user, new EventListener<User.Event>()
 {
     public void onEvent(User.Event event)
@@ -35,13 +34,11 @@ EventSupport.listen(user, new EventListener<User.Event>()
         // ...
     }
 });
-</code>
-</pre>
+```
 
 And to listen to User.Event from anyone (not just users, but anything that fires an User.Event):
 
-<pre>
-<code>
+```java
 EventSupport.listen(new EventListener<User.Event>()
 {
     public void onEvent(User.Event event)
@@ -49,17 +46,16 @@ EventSupport.listen(new EventListener<User.Event>()
         // ...
     }
 });
-</code>
-</pre>
+```
 
 For our "user" to fire an event:
-<code>
+```java
 EventSupport.fire(user, new User.Event());
-</code>
+```
 
 And to fire an anonymous "user" event:
-<code>
+```java
 EventSupport.fire(new User.Event());
-</code>
+```
 
 Note, this is a Java 7, Maven 3 project.
