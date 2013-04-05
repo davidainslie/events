@@ -9,12 +9,20 @@
     <artifactId>events</artifactId>
     <name>${project.artifactId}</name>
     <url>http://www.kissthinker.com</url>
-
+    
     <!-- Major.Minor.Trivial versioning scheme -->
     <version>0.0.1</version>
     
     <!-- pom, jar, war, ear, rar, sar, or har -->
     <packaging>jar</packaging>
+    
+    <developers>
+        <developer>
+            <id>davidainslie</id>
+            <name>David Ainslie</name>
+            <email>dainslie@gmail.com</email>
+        </developer>
+    </developers>
         
     <properties>
         <!-- Ensure that the build is consistent across all platforms i.e. platform independent encoding -->
@@ -42,18 +50,8 @@
         
     <repositories>
         <repository>
-            <id>reflect-old-mvn-repo</id>
-            <url>https://raw.github.com/davidainslie/reflect-old/mvn-repo/</url>
-            
-            <snapshots>
-                <enabled>true</enabled>
-                <updatePolicy>always</updatePolicy>
-            </snapshots>
-        </repository>
-        
-        <repository>
-            <id>collection-old-mvn-repo</id>
-            <url>https://raw.github.com/davidainslie/collection-old/mvn-repo/</url>
+            <id>kissthinker.mvn.repo</id>
+            <url>https://raw.github.com/davidainslie/kissthinker/mvn-repo/</url>
             
             <snapshots>
                 <enabled>true</enabled>
@@ -173,14 +171,14 @@
                 <configuration>
                     <message>Maven artifacts for ${project.version}</message> <!-- git commit message -->
                     <noJekyll>true</noJekyll> <!-- disable webpage processing -->
-                    <outputDirectory>${project.build.directory}/mvn-repo</outputDirectory> <!-- matches distribution management repository url above -->
+                    <outputDirectory>${user.home}/mvn-repo</outputDirectory> <!-- matches distribution management repository url -->
                     <branch>refs/heads/mvn-repo</branch> <!-- remote branch name -->
                     
                     <includes>
                         <include>**/*</include>
                     </includes>
                 
-                    <repositoryName>${project.artifactId}</repositoryName> <!-- github repo name -->
+                    <repositoryName>kissthinker</repositoryName> <!-- github repo name -->
                     <repositoryOwner>davidainslie</repositoryOwner> <!-- github username -->
                 </configuration>
             
@@ -426,9 +424,9 @@
     
     <distributionManagement>
         <repository>
-            <id>internal.repo</id>
+            <id>kissthinker.mvn.repo</id>
             <name>Temporary Staging Repository</name>
-            <url>file://${project.build.directory}/mvn-repo</url>
+            <url>file://${user.home}/mvn-repo</url>
         </repository>
     </distributionManagement>
     
